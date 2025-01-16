@@ -1,9 +1,9 @@
 const AmazonLogo = ({ className = "" }) => (
-  <div className="mt-2 ml-4">
+  <div className="md:ml-2 sm:border mt-2 sm:border-transparent p-1 hover:border-white">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="110"
-      height="38"
+      height="40"
       viewBox="7.082 7.081 957.518 181.5"
     >
       <path
