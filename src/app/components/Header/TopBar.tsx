@@ -4,7 +4,7 @@ import React from "react";
 import AmazonLogo from "../AmazonLogo";
 import SearchBar from "../SearchBar";
 import LocationBar from "./LocationBar";
-import useWindowSize from "@/app/hooks/useScreenWidth";
+import useWindowSize from "@/app/data/useScreenWidth";
 import Link from "next/link";
 import Cart from "./Cart";
 
