@@ -5,7 +5,7 @@ import banner1 from "./banner1.jpg";
 import banner2 from "./banner2.jpg";
 import banner3 from "./banner3.jpg";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import useScreenWidth from "@/app/hooks/useScreenWidth";
+import useScreenWidth from "@/app/data/useScreenWidth";
 import SmallHeroCarousel from "./SmallHeroCarousel";
 
 const HeroCarousel = () => {
