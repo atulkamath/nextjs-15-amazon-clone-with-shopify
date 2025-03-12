@@ -9,7 +9,7 @@ export default function ProductGrid() {
   const title = ["Games", "Appliances", "Clothing"];
 
   return (
-    <div className="px-8 grid grid-cols-2 md:-mt-32 md:grid-cols-3 gap-4 xl:grid-cols-4 xl:-mt-72 z-10 relative xl:px-12">
+    <div className="md:px-8 gap-2 grid grid-cols-2 md:-mt-32 md:grid-cols-3 md:gap-4 xl:grid-cols-4 xl:-mt-72 z-10 relative xl:px-12">
       {images.map((data, index) => (
         <Link key={index} href={`/products/${title[index]}`}>
           <div className="bg-white p-4 flex flex-col h-full">

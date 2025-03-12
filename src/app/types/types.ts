@@ -27,3 +27,16 @@ export interface ProductCardDetailSchema {
     images: ProductCardImage;
   };
 }
+export interface ProductsByTagsSchema {
+  data: {
+    products: {
+      edges: {
+        node: {
+          id: string;
+          title: string;
+          images: ProductCardImage;
+        };
+      }[];
+    };
+  };
+}
