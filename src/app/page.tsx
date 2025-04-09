@@ -12,7 +12,7 @@ export default function Home() {
       <HeroCarousel />
       <TileCarousel />
       <ProductGrid />
-      <div className="gap-4 grid sm:grid-cols-2 lg:grid-cols-4 sm:px-8 lg:px-12">
+      <div className="gap-4 grid sm:grid-cols-2 lg:grid-cols-4 sm:px-8 lg:px-12 lg:mt-4">
         {productGridMetaAData.map(
           (data, index) =>
             data && (
