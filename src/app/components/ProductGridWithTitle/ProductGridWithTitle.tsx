@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getProductsByTags } from "./getProductGridWithTitle";
+import Link from "next/link";
 
 export default function ProductGridWithTitle({
   title,
@@ -19,14 +20,18 @@ export default function ProductGridWithTitle({
                 key={product.node.id}
                 className="flex flex-col cursor-pointer"
               >
-                <Image
-                  className="object-contain min-h-32 max-h-32 bg-amazon-yellow"
-                  alt="product image"
-                  src={product.node.images.nodes[0].url}
-                  width={200}
-                  height={200}
-                />
-                <h1 className="text-sm font-bold mb-2">{product.node.title}</h1>
+                <Link href={`/${product.node.handle}`}>
+                  <Image
+                    className="object-contain min-h-32 max-h-32 bg-amazon-yellow"
+                    alt="product image"
+                    src={product.node.images.nodes[0].url}
+                    width={200}
+                    height={200}
+                  />
+                  <h1 className="text-sm font-bold mb-2">
+                    {product.node.title}
+                  </h1>
+                </Link>
               </div>
             );
           });

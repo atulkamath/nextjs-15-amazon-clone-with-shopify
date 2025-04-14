@@ -13,6 +13,7 @@ export interface ProductCardImage {
 export interface ProductCardDetailSchema {
   node: {
     id: string;
+    handle: string;
     title: string;
     description: string;
     tags: string[];
@@ -33,10 +34,27 @@ export interface ProductsByTagsSchema {
       edges: {
         node: {
           id: string;
+          handle: string;
           title: string;
           images: ProductCardImage;
         };
       }[];
+    };
+  };
+}
+
+export interface ProductSchema {
+  data: {
+    product: {
+      description: string;
+      title: string;
+      images: ProductCardImage;
+      priceRange: {
+        maxVariantPrice: {
+          amount: number;
+        };
+      };
+      totalInventory: number;
     };
   };
 }
