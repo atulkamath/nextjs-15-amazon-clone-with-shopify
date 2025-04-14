@@ -7,7 +7,7 @@ import { productGridMetaAData } from "./data/productGridMetaData";
 
 export default function Home() {
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-ful bg-[#ece9e9]">
       <ShortcutCarousel />
       <HeroCarousel />
       <TileCarousel />

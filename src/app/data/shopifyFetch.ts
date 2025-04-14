@@ -1,4 +1,4 @@
-import { SearchSchema } from "../types/types";
+import { ProductSchema, SearchSchema } from "../types/types";
 
 export async function shopifyFetch<T>({
   query,
@@ -45,6 +45,7 @@ export async function searchProducts(query: string) {
       node {
         ... on Product {
           id
+          handle
           title
           description
           tags
@@ -70,6 +71,33 @@ export async function searchProducts(query: string) {
     variables: {
       query: query,
       first: 20,
+    },
+  });
+}
+export async function getProduct(handle: string) {
+  return shopifyFetch<ProductSchema>({
+    query: `
+    query($handle:String!){
+    product(handle: $handle) {
+          title
+          description
+          priceRange {
+            maxVariantPrice {
+              amount
+            }
+            
+            }
+            images(first:3){
+            nodes{
+            url
+            }
+            }
+            totalInventory
+  }
+  }
+    `,
+    variables: {
+      handle: handle,
     },
   });
 }

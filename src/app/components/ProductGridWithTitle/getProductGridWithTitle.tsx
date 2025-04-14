@@ -10,6 +10,7 @@ export async function getProductsByTags(query: string) {
     edges {
       node {
         id
+        handle
         title
         images(first: 1){
         nodes {

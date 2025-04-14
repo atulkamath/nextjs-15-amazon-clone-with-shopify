@@ -10,8 +10,7 @@ export default async function Page({
   const data = searchProducts(slug);
   return (
     <div>
-      <p>Results</p>
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 gap-2 p-2 bg-white md:grid-cols-2 lg:grid-cols-5">
         {(await data).body?.data.search.edges.map((data) => (
           <ProductCard key={data.node.id} data={data} />
         ))}
