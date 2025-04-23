@@ -27,7 +27,12 @@ export default async function ProductPage({
             <ReviewCard />
           </div>
           <PriceCard price={product.priceRange.maxVariantPrice.amount} />
-          <AddToCartButton />
+          <div className="lg:w-1/2">
+            <AddToCartButton
+              variantId={product.variants.edges[0].node.id}
+              quantity={1}
+            />
+          </div>
           <ProductDescription description={product.description} />
         </div>
       </div>

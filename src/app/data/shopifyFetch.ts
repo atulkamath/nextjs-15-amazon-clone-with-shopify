@@ -1,4 +1,9 @@
-import { ProductSchema, SearchSchema } from "../types/types";
+import {
+  CartItems,
+  CartSchema,
+  ProductSchema,
+  SearchSchema,
+} from "../types/types";
 
 export async function shopifyFetch<T>({
   query,
@@ -7,9 +12,9 @@ export async function shopifyFetch<T>({
   query: string;
   variables?: object;
 }): Promise<{ status: number; body: T | null; error?: string }> {
-  const endpoint = process.env.SHOPIFY_STORE_DOMAIN as string;
+  const endpoint = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN as string;
   if (!endpoint) throw new Error("endpoint not defined");
-  const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
+  const key = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN;
 
   try {
     const result = await fetch(endpoint, {
@@ -49,6 +54,13 @@ export async function searchProducts(query: string) {
           title
           description
           tags
+          variants(first:1){
+          edges{
+          node{
+          id
+          }
+          }
+          }
           priceRange {
             maxVariantPrice {
               amount
@@ -79,8 +91,16 @@ export async function getProduct(handle: string) {
     query: `
     query($handle:String!){
     product(handle: $handle) {
+          handle
           title
           description
+          variants(first:1){
+          edges{
+          node {
+          id
+          }
+          }
+          }
           priceRange {
             maxVariantPrice {
               amount
@@ -98,6 +118,211 @@ export async function getProduct(handle: string) {
     `,
     variables: {
       handle: handle,
+    },
+  });
+}
+//add the id which is needed for q-selector.
+export async function getCart(cartId: string) {
+  return shopifyFetch<CartSchema>({
+    query: `
+    query($cartId:ID!){
+    cart(id:$cartId){
+    totalQuantity
+    cost{
+    totalAmount{
+    amount
+    }
+    }
+    lines(first: 100) {
+      edges {
+        node {
+        id
+          merchandise {
+            ... on ProductVariant {
+              id
+              quantityAvailable
+              product{
+              images(first:1) {
+              nodes {
+              url
+              }
+              }
+                handle
+                title
+                id
+              }
+              price {
+                amount
+              }
+            }
+          }
+          quantity
+        }
+      }
+    }
+  }
+  }
+    `,
+    variables: {
+      cartId: cartId,
+    },
+  });
+}
+
+export async function createCart(variantId: string, quantity: number) {
+  return shopifyFetch({
+    query: `
+    mutation cartCreate($input: CartInput) {
+      cartCreate(input: $input) {
+        cart {
+          id
+          lines(first: 10) {
+            edges {
+              node {
+                id
+                quantity
+                merchandise {
+                  ... on ProductVariant {
+                    id
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+    userErrors {
+      field
+      message
+    }
+    warnings {
+      message
+    }
+  }
+}
+    `,
+    variables: {
+      input: {
+        lines: [
+          {
+            merchandiseId: variantId,
+            quantity,
+          },
+        ],
+      },
+    },
+  });
+}
+
+export async function addItemToCart(
+  cartId: string,
+  variantId: string,
+  quantity: number
+) {
+  return shopifyFetch<CartItems>({
+    query: `
+    mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+  cartLinesAdd(cartId: $cartId, lines: $lines) {
+    cart {
+      id
+      lines(first: 10) {
+        edges {
+          node {
+            id
+            quantity
+            merchandise {
+              ... on ProductVariant {
+                id
+                title
+              }
+            }
+          }
+        }
+      }
+    }
+    userErrors {
+      field
+      message
+    }
+    warnings {
+      message
+    }
+  }
+}
+    `,
+    variables: {
+      cartId,
+      lines: [
+        {
+          merchandiseId: variantId,
+          quantity,
+        },
+      ],
+    },
+  });
+}
+
+export async function updateCartQuantity(
+  cartId: string,
+  variantId: string,
+  quantity: number
+) {
+  return shopifyFetch({
+    query: `
+    mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+      cartLinesUpdate(cartId: $cartId, lines: $lines) {
+        cart {
+        totalQuantity
+          cost{
+          totalAmount {
+          amount
+          }
+          }
+          lines(first: 100) {
+            edges {
+              node {
+                id
+                
+                merchandise {
+                  ... on ProductVariant {
+                    id
+                    quantityAvailable
+                    product{
+                    images(first:1) {
+                    nodes {
+                    url
+                    }
+                    }
+                      title
+                      id
+                    }
+                    price {
+                    amount}
+                  }
+                }
+                  quantity
+              }
+            }
+          }
+        }
+        userErrors {
+          field
+          message
+        }
+        warnings {
+          message
+        }
+      }
+    }
+    `,
+    variables: {
+      cartId,
+      lines: [
+        {
+          id: variantId,
+          quantity,
+        },
+      ],
     },
   });
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <div className="flex p-3 space-x-4 overflow-scroll font-bold whitespace-nowrap md:bg-['#232f3e'] bg-amazon-blue w-full">
+    <div className="flex px-3 py-2 space-x-4 overflow-scroll font-bold whitespace-nowrap md:bg-['#232f3e'] bg-amazon-blue w-full">
       {navLinks.map((navLink) => (
         <Link key={navLink} href="/">
           <div key={navLink} className="text-white">
