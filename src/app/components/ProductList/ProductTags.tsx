@@ -4,7 +4,7 @@ export default function ProductTags({ data }: { data: string[] }) {
       {data.map((data, index) => (
         <p
           key={index}
-          className="bg-zinc-100 font-semibold text-xs text-center w-1/4 py-1"
+          className="bg-zinc-100 font-semibold text-xs text-center p-0.5"
         >
           {data}
         </p>
