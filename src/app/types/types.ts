@@ -10,6 +10,27 @@ export interface ProductCardImage {
     url: string;
   }[];
 }
+export interface CartItems {
+  data: {
+    cartLinesAdd: {
+      cart: {
+        id: string;
+        lines: {
+          edges: {
+            node: {
+              id: string;
+              quantity: number;
+              merchandise: {
+                id: string;
+                title: string;
+              };
+            };
+          }[];
+        };
+      };
+    };
+  };
+}
 export interface ProductCardDetailSchema {
   node: {
     id: string;
@@ -17,6 +38,13 @@ export interface ProductCardDetailSchema {
     title: string;
     description: string;
     tags: string[];
+    variants: {
+      edges: {
+        node: {
+          id: string;
+        };
+      }[];
+    };
     priceRange: {
       maxVariantPrice: {
         amount: number;
@@ -54,7 +82,57 @@ export interface ProductSchema {
           amount: number;
         };
       };
+      variants: {
+        edges: {
+          node: {
+            id: string;
+          };
+        }[];
+      };
       totalInventory: number;
+    };
+  };
+}
+export interface CartSchema {
+  data: {
+    cart: {
+      totalQuantity: number;
+      cost: {
+        totalAmount: {
+          amount: number;
+        };
+      };
+      lines: {
+        edges: CartEdges[];
+      };
+    };
+  };
+}
+export interface CartEdges {
+  node: {
+    id: string;
+    quantity: number;
+    merchandise: {
+      id: string;
+      quantityAvailable: number;
+      product: {
+        id: string;
+        title: string;
+        handle: string;
+        images: ProductCardImage;
+      };
+      price: {
+        amount: number;
+      };
+    };
+  };
+}
+export interface CartId {
+  data: {
+    cartCreate: {
+      cart: {
+        id: string;
+      };
     };
   };
 }

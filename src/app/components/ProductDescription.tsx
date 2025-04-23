@@ -7,7 +7,7 @@ export default function ProductDescription({
     <p className="mt-6 max-w-prose">
       <span className="font-bold text-lg">About this item</span>
       <br />
-      {description}
+      {description || "No description available."}
     </p>
   );
 }

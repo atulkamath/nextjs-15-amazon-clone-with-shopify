@@ -6,7 +6,7 @@ import SearchBar from "../SearchBar";
 import LocationBar from "./LocationBar";
 import useWindowSize from "@/app/data/useScreenWidth";
 import Link from "next/link";
-import Cart from "./Cart";
+import Cart from "./Cart/Cart";
 
 const TopBar = () => {
   const { width } = useWindowSize();
