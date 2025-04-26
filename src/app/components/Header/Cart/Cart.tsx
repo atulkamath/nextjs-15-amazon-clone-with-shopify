@@ -25,7 +25,7 @@ const Cart = () => {
   return (
     <Link href="/cart">
       <button className="flex mx-2 items-baseline relative">
-        <span className=" text-amazon-orange absolute bottom-3 right-2 lg:right-[54px] lg:bottom-[17.5px] z-20 bg-amazon-blue lg:bg-amazon-dark-blue ">
+        <span className=" text-amazon-orange absolute bottom-3 right-2 lg:right-[54px] lg:bottom-[17.5px] z-20 bg-amazon-blue lg:bg-amazon-dark-blue font-extrabold">
           {cartItems?.data?.cart.totalQuantity}
         </span>
         <ShoppingCart size={28} className="white relative z-10" />
