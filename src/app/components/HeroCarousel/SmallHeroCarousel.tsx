@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import banner1 from "./smallBanner1.jpg";
-import banner2 from "./smallBanner2.jpg";
-import banner3 from "./smallBanner3.jpg";
+import banner1 from "./images/smallBanner1.jpg";
+import banner2 from "./images/smallBanner2.jpg";
+import banner3 from "./images/smallBanner3.jpg";
 import Image from "next/image";
 
 const SmallHeroCarousel = () => {
