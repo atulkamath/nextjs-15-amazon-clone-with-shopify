@@ -27,7 +27,7 @@ const HeroCarousel = () => {
   return width && width < 768 ? (
     <SmallHeroCarousel />
   ) : (
-    <div className="relative w-full mx-auto overflow-hidden z-10">
+    <div className="relative w-full mx-auto overflow-hidden">
       <div
         className="flex transition-transform duration-500 ease-in-out"
         style={{
