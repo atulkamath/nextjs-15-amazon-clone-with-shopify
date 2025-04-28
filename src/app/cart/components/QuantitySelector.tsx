@@ -1,4 +1,4 @@
-import { useCartContext } from "@/app/cart-provider";
+import { useCartContext } from "@/app/CartProvider";
 import { getCart, updateCartQuantity } from "@/app/data/shopifyFetch";
 import { LoaderCircle, MinusIcon, PlusIcon, Trash } from "lucide-react";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCartContext } from "@/app/cart-provider";
+import { useCartContext } from "@/app/CartProvider";
 import { getCart } from "@/app/data/shopifyFetch";
 import { ShoppingCart } from "lucide-react";
 import { useEffect } from "react";
