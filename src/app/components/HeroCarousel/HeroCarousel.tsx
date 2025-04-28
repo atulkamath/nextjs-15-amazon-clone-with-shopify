@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import banner1 from "./banner1.jpg";
-import banner2 from "./banner2.jpg";
-import banner3 from "./banner3.jpg";
+import banner1 from "./images/banner1.jpg";
+import banner2 from "./images/banner2.jpg";
+import banner3 from "./images/banner3.jpg";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import useScreenWidth from "@/app/data/useScreenWidth";
 import SmallHeroCarousel from "./SmallHeroCarousel";
