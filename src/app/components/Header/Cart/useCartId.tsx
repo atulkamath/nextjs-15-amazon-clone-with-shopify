@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { shopifyFetch } from "@/app/data/shopifyFetch";
-import { useCartContext } from "@/app/cart-provider";
+import { useCartContext } from "@/app/CartProvider";
 import { CartId } from "@/app/types/types";
 
 export function useCartId() {
