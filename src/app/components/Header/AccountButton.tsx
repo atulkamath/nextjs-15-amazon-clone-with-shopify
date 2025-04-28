@@ -20,7 +20,7 @@ export default function AccountButton({
   return (
     <>
       {showModal && <Login onClose={() => setShowModal(false)} />}
-      <button className="flex border border-transparent hover:border-white p-1">
+      <button className="flex border border-transparent hover:border-white p-1 mx-4">
         <div className="text-sm text-start">
           {session ? (
             <div className="flex flex-col">

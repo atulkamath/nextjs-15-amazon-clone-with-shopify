@@ -21,18 +21,20 @@ const TopBar = async () => {
       <div className="hidden md:block flex-grow">
         <SearchBar />
       </div>
-      <div className="ml-auto flex md:flex space-x-4 items-center">
+      <div className="ml-auto flex md:flex items-center">
         <span className="hidden lg:flex">🇦🇪 EN</span>
 
         <AccountButton session={session} />
 
-        <button className="hidden lg:flex border border-transparent hover:border-white p-1">
-          <div className="text-sm text-start">
-            <span>Returns</span>
-            <br />
-            <span className="font-bold whitespace-nowrap">& Orders</span>
-          </div>
-        </button>
+        <Link href="/returns">
+          <button className="hidden lg:flex border border-transparent hover:border-white p-1">
+            <div className="text-sm text-start">
+              <span>Returns</span>
+              <br />
+              <span className="font-bold whitespace-nowrap">& Orders</span>
+            </div>
+          </button>
+        </Link>
         <Cart />
       </div>
     </div>
