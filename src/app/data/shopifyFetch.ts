@@ -41,11 +41,15 @@ export async function shopifyFetch<T>({
   }
 }
 
-export async function searchProducts(query: string) {
+export async function searchProducts(
+  query: string,
+  sortKey?: string,
+  reverse?: boolean
+) {
   return shopifyFetch<SearchSchema>({
     query: `
-    query ($query: String!, $first: Int) {
-  search(query: $query, first: $first, types: PRODUCT) {
+    query ($query: String!, $first: Int, $sortKey:SearchSortKeys!, $reverse:Boolean) {
+  search(query: $query, first: $first, types: PRODUCT, sortKey:$sortKey, reverse:$reverse) {
     edges {
       node {
         ... on Product {
@@ -83,6 +87,8 @@ export async function searchProducts(query: string) {
     variables: {
       query: query,
       first: 20,
+      sortKey: sortKey,
+      reverse: reverse,
     },
   });
 }
