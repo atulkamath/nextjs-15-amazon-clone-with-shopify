@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useCartContext } from "../cart-provider";
+import { useCartContext } from "../CartProvider";
 import { addItemToCart, getCart } from "../data/shopifyFetch";
 import { LoaderCircle } from "lucide-react";
 import { useRouter } from "next/navigation";

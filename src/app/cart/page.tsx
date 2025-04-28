@@ -1,6 +1,6 @@
 "use client";
 
-import { useCartContext } from "../cart-provider";
+import { useCartContext } from "../CartProvider";
 import CartItem from "./components/CartItem";
 import CartSummary from "./components/CartSummary";
 
