@@ -1,12 +1,10 @@
-## Amazon Clone using Next.js 15, GraphQL and Shopify as a headles SaaS
+## Amazon Clone using Next.js 15, GraphQL and Shopify as a headless SaaS
 
 <img width="1624" alt="Screenshot 2025-04-30 at 9 21 04 AM" src="https://github.com/user-attachments/assets/6479e4f6-208a-454a-ad6a-9d1dd3d3d5fe" />
 
-
-
 ## Getting Started
 
-First ```run npm install``` to install the dependencies, then run the development server:
+Assuming you have node installed, first ```run npm install``` to install the dependencies then run the development server:
 
 ```bash
 npm run dev
@@ -24,6 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - 🔒 Authentication with Auth.js
 - 🔃 Sorting and filtering through GraphQL
 - 🛒 Persistent cart across sessions
+- 🔍 Product search functionality
 
 
 
